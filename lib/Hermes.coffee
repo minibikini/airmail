@@ -18,7 +18,13 @@ getViews = (viewRoot, name) ->
   views
 
 class Mailer  
+  mainOnly: no
+
   constructor: (mailer, @_config, @_transport) ->
+    if _.isFunction mailer
+      @mainOnly = yes
+      mailer = main : mailer
+
     if mailer.defaults? 
       @defaults = mailer.defaults
       delete mailer.defaults
@@ -30,20 +36,22 @@ class Mailer
     _.defaults @defaults, @_config.defaults
 
     @setMethod name, method for name, method of mailer
+    return @main if @mainOnly
     
   setMethod: (name, method) ->
     views = getViews @_config.views, name
 
-    @[name] = (args...) ->
+    @[name] = (args...) =>
       cb = if _.isFunction _.last args then args.pop() else ->
       that = mail: (message = {}) => @_mail views, message, cb      
       method.apply that, args
     
-  _mail: (views, message = {}, cb = ->) ->    
+  _mail: (views = {}, message = {}, cb = ->) ->    
     if message.data? and @defaults.data?
       _.defaults message.data, @defaults.data    
     
     _.defaults message, @defaults
+    console.log message
     message.text = views.text message.data if views.text?
     message.html = views.html message.data if views.html?
     
