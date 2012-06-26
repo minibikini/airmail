@@ -51,7 +51,6 @@ class Mailer
       _.defaults message.data, @defaults.data    
     
     _.defaults message, @defaults
-    console.log message
     message.text = views.text message.data if views.text?
     message.html = views.html message.data if views.html?
     
