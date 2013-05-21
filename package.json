@@ -1,6 +1,6 @@
 {
   "name": "hermes",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "full featured rails-inspired mailer for node.js",
   "keywords": ["mail", "email", "mailer", "smtp", "sendmail", "ses", "e-mail"],
   "homepage": "http://github.com/minibikini/hermes",
