@@ -1,9 +1,8 @@
-_ = require 'underscore'
+_ = require 'lodash'
 handlebars = require 'handlebars'
 fs = require 'fs'
 path = require 'path'
 nodemailer = require "nodemailer"
-
 
 getViews = (viewRoot, name) ->
   getView = (path) -> handlebars.compile fs.readFileSync path, 'utf8'
@@ -39,7 +38,8 @@ class Mailer
     return @main if @mainOnly
 
   setMethod: (name, method) ->
-    views = getViews @_config.views, name
+    templateName = if @mainOnly then @_config.name else name
+    views = getViews @_config.views, templateName
 
     @[name] = (args...) =>
       cb = if _.isFunction _.last args then args.pop() else ->
@@ -66,7 +66,12 @@ module.exports = class Hermes
 
   addMailer: (name, mailer) ->
     config = _.clone @config
-    config.views = path.resolve @config.views, name
+    config.name = name
+    config.views = if _.isFunction mailer
+      @config.views
+    else
+      path.resolve @config.views, name
+
     @[name] = new Mailer mailer, config, @_transport
 
   #send: ->
