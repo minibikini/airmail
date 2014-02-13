@@ -1,17 +1,27 @@
 {
   "name": "hermes",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "full featured rails-inspired mailer for node.js",
-  "keywords": ["mail", "email", "mailer", "smtp", "sendmail", "ses", "e-mail"],
+  "keywords": [
+    "mail",
+    "email",
+    "mailer",
+    "smtp",
+    "sendmail",
+    "ses",
+    "e-mail"
+  ],
   "homepage": "http://github.com/minibikini/hermes",
   "bugs": {
-      "url": "http://github.com/minibikini/hermes/issues",
-      "email": "egor@kislitsyn.com"
-    },
-  "licenses": [{
-    "type": "MIT",
-    "url": "http://github.com/minibikini/hermes/raw/master/LICENSE"
-  }],
+    "url": "http://github.com/minibikini/hermes/issues",
+    "email": "egor@kislitsyn.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/minibikini/hermes/raw/master/LICENSE"
+    }
+  ],
   "author": "Egor Kislitsyn <egor@kislitsyn.com> (http://kislitsyn.com/)",
   "repository": {
     "type": "git",
@@ -22,9 +32,9 @@
     "node": ">=0.10.x"
   },
   "dependencies": {
-    "coffee-script": ">=1.3.1",
     "lodash": "*",
     "nodemailer": ">=0.3.18",
-    "handlebars": ">=1.0.4"
+    "handlebars": ">=1.0.4",
+    "coffee-script": "~1.7.1"
   }
 }
