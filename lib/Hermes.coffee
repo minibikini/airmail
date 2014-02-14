@@ -1,8 +1,12 @@
-_ = require 'lodash'
-handlebars = require 'handlebars'
 fs = require 'fs'
 path = require 'path'
+{EventEmitter} = require 'events'
+_ = require 'lodash'
+handlebars = require 'handlebars'
 nodemailer = require "nodemailer"
+typeOf = require 'typeof'
+
+TestTransport = require './TestTransport'
 
 getViews = (viewRoot, name) ->
   getView = (path) -> handlebars.compile fs.readFileSync path, 'utf8'
@@ -56,13 +60,22 @@ class Mailer
 
     @_transport.sendMail message, cb
 
-module.exports = class Hermes
+module.exports = class Hermes extends EventEmitter
   constructor: (@config, mailers) ->
     @createTransport()
     @addMailer name, mailer for name, mailer of mailers
 
   createTransport: ->
-    @_transport = nodemailer.createTransport @config.transport.type, @config.transport
+    @_transport = switch typeOf @config.transport
+      when 'object' then nodemailer.createTransport @config.transport.type, @config.transport
+      when 'string'
+        if @config.transport is 'test'
+          nodemailer.createTransport TestTransport, hermes: @
+        else
+          throw new Error "Bad Mail Transport"
+      when 'function' then nodemailer.createTransport @config.transport
+      else throw new Error "Bad Mail Transport"
+
 
   addMailer: (name, mailer) ->
     config = _.clone @config

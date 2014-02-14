@@ -1,6 +1,6 @@
 {
   "name": "hermes",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "full featured rails-inspired mailer for node.js",
   "keywords": [
     "mail",
@@ -35,6 +35,7 @@
     "lodash": "*",
     "nodemailer": ">=0.3.18",
     "handlebars": ">=1.0.4",
-    "coffee-script": "~1.7.1"
+    "coffee-script": "~1.7.1",
+    "typeof": "~1.0.0"
   }
 }
