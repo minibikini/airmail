@@ -11,21 +11,21 @@
     "ses",
     "e-mail"
   ],
-  "homepage": "http://github.com/minibikini/hermes",
+  "homepage": "http://github.com/minibikini/airmail",
   "bugs": {
-    "url": "http://github.com/minibikini/hermes/issues",
+    "url": "http://github.com/minibikini/airmail/issues",
     "email": "egor@kislitsyn.com"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/minibikini/hermes/raw/master/LICENSE"
+      "url": "http://github.com/minibikini/airmail/raw/master/LICENSE"
     }
   ],
   "author": "Egor Kislitsyn <egor@kislitsyn.com> (http://kislitsyn.com/)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/minibikini/hermes.git"
+    "url": "git://github.com/minibikini/airmail.git"
   },
   "main": "./index",
   "engines": {
