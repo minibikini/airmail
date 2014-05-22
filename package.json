@@ -1,6 +1,6 @@
 {
   "name": "airmail",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "full featured rails-inspired mailer for node.js",
   "keywords": [
     "mail",
