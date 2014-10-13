@@ -1,6 +1,6 @@
 {
   "name": "airmail",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "full featured rails-inspired mailer for node.js",
   "keywords": [
     "mail",
@@ -32,10 +32,11 @@
     "node": ">=0.10.x"
   },
   "dependencies": {
+    "bluebird": "^2.3.5",
+    "coffee-script": "~1.7.1",
+    "handlebars": ">=1.0.4",
     "lodash": "*",
     "nodemailer": "0.7.1",
-    "handlebars": ">=1.0.4",
-    "coffee-script": "~1.7.1",
     "typeof": "~1.0.0"
   }
 }

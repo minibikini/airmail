@@ -4,6 +4,7 @@ path = require 'path'
 _ = require 'lodash'
 handlebars = require 'handlebars'
 nodemailer = require "nodemailer"
+Promise = require 'bluebird'
 typeOf = require 'typeof'
 
 TestTransport = require './TestTransport'
@@ -50,7 +51,7 @@ class Mailer
       that = mail: (message = {}) => @_mail views, message, cb
       method.apply that, args
 
-  _mail: (views = {}, message = {}, cb = ->) ->
+  _mail: (views = {}, message = {}, cb) ->
     if message.data? and @defaults.data?
       _.defaults message.data, @defaults.data
 
@@ -58,7 +59,9 @@ class Mailer
     message.text = views.text message.data if views.text?
     message.html = views.html message.data if views.html?
 
-    @_transport.sendMail message, cb
+    sendMail = Promise.promisify @_transport.sendMail, @_transport
+
+    sendMail(message).nodeify cb
 
 module.exports = class Hermes extends EventEmitter
   constructor: (@config, mailers) ->
