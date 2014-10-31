@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "bluebird": "^2.3.5",
-    "coffee-script": "~1.7.1",
+    "coffee-script": "~1.8.0",
     "handlebars": ">=1.0.4",
     "lodash": "*",
     "nodemailer": "0.7.1",
