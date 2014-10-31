@@ -31,6 +31,10 @@
   "engines": {
     "node": ">=0.10.x"
   },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "dependencies": {
     "bluebird": "^2.3.5",
     "coffee-script": "~1.7.1",
